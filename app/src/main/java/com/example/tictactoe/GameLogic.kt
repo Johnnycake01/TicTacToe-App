@@ -12,25 +12,25 @@ class GameLogic{
     }
 
     private lateinit var playAgainBTN:Button
-    fun getPlayAgainBTN() = player
+
     fun setPlayAgainBTN(playAgain:Button){
         this.playAgainBTN = playAgain
     }
 
     private lateinit var homeButton:Button
-    fun getHomeBTN() = homeButton
+
     fun setHomeBTN(homeButton:Button){
         this.homeButton = homeButton
     }
 
     private lateinit var playerTurn:TextView
-    fun getPlayerTurn() = playerTurn
+
     fun setPlayerTurn(playerTurn:TextView){
         this.playerTurn = playerTurn
     }
 
     private var playerName:Array<String> = arrayOf("Player 1","Player 2")
-    fun getPlayerName() = playerName
+
     fun setPlayerName(playerName:Array<String>){
         this.playerName = playerName
     }
@@ -125,8 +125,8 @@ class GameLogic{
             boardCount == 9 -> {
                 playAgainBTN.visibility = View.VISIBLE
                 homeButton.visibility = View.VISIBLE
-                "Draw!!".also { playerTurn.text = it }
-                return true
+                "Its a tie!!!".also { playerTurn.text = it }
+                return false
             }
             else -> {
                 return false
