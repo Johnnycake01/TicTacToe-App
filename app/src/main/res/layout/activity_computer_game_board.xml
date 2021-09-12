@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ComputerGameBoard"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    >
+    <TextView
+        android:id="@+id/computerBoardTicText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tic_tac_toe"
+        android:layout_marginTop="60dp"
+        android:textAppearance="@style/ticUserNameTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/computerGameReplayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/play_button_design"
+        android:padding="20dp"
+        android:text="@string/playAgain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/computerGameQuitButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/computerGameQuitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@drawable/play_button_design"
+        android:text="@string/quitButton"
+        app:layout_constraintBottom_toBottomOf="@id/computerGameReplayButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/computerGameReplayButton"
+
+        />
+    <TextView
+        android:id="@+id/tvComputerPlayerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/computerBoardTicText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toTopOf="@id/computerTicTacToeBoard"
+        android:textAppearance="@style/ticUserNameTitle"
+        android:textSize="18sp"
+        />
+
+    <com.example.tictactoe.drawable.ComputerTicTacToeBoard
+        android:id="@+id/computerTicTacToeBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:boardColor = "@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/computerGameReplayButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/computerBoardTicText"
+        custom:XColor = "@color/purple_700"
+        custom:OColor = "#FF5722"
+        custom:winningLineColor = "@color/purple_200"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

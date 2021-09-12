@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         playButton = findViewById(R.id.homePlayButton)
 
         playButton.setOnClickListener {
-            val intent = Intent(this, GetUserNames::class.java)
+            val intent = Intent(this, ChooseGameType::class.java)
             startActivity(intent)
         }
     }
