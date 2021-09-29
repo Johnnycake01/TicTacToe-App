@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.tictactoe.ComputerGameLogic_Easy;
+import com.example.tictactoe.logic.ComputerGameLogicEasy;
 import com.example.tictactoe.R;
 
 
@@ -24,7 +24,7 @@ public class ComputerTicTacToeBoard extends View {
     private final int OColor;
     private Boolean winning = false;
     private final int winningLineColor;
-    private final ComputerGameLogic_Easy game;
+    private final ComputerGameLogicEasy game;
     private final Paint paint = new Paint();
     private int cellSize = getWidth()/3;
     public ComputerTicTacToeBoard(Context context, @Nullable AttributeSet attrs) {
@@ -40,7 +40,7 @@ public class ComputerTicTacToeBoard extends View {
         }finally {
             a.recycle();
         }
-        game = new ComputerGameLogic_Easy();
+        game = new ComputerGameLogicEasy();
     }
 
     @Override

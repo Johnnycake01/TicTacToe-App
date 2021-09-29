@@ -3,25 +3,35 @@ package com.example.tictactoe.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatButton
 import com.example.tictactoe.R
+import com.example.tictactoe.databinding.ActivityPlayWithComputerGetNameBinding
+import com.example.tictactoe.databinding.ActivityPlayWithComputerHardBinding
 
 class PlayWithComputerGetName : AppCompatActivity() {
-    private lateinit var submit: AppCompatButton
-    private lateinit var player1Name: EditText
+    private lateinit var binding: ActivityPlayWithComputerGetNameBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_play_with_computer_get_name)
-        submit = findViewById(R.id.SinglePlayerNameSubmitButton)
-        player1Name = findViewById(R.id.PlayerName)
+        binding = ActivityPlayWithComputerGetNameBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+       val chooseLevel:Int = intent.getStringExtra("value")!!.toInt()
+        Log.d("llllllllll", "onCreate: $chooseLevel")
 
-        submit.setOnClickListener {
-            val player1:String = player1Name.text.toString()
+        binding.SinglePlayerNameSubmitButton.setOnClickListener {
+            val player1:String = binding.PlayerName.text.toString()
             val names:Array<String> = arrayOf(player1,"Computer")
-            val intent = Intent(this, ComputerGameBoard::class.java)
-            intent.putExtra("PLAYER_NAMES", names)
-            startActivity(intent)
+            if (chooseLevel == 1){
+                val intent = Intent(this, ComputerGameBoard::class.java)
+                intent.putExtra("PLAYER_NAMES", names)
+                startActivity(intent)
+            }else{
+                val intent = Intent(this, PlayWithComputerHard::class.java)
+                intent.putExtra("PLAYER_NAMES", names)
+                startActivity(intent)
+            }
+
         }
     }
 }
