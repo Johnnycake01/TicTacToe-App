@@ -16,7 +16,7 @@ class ChooseGameType : AppCompatActivity() {
         twoPlayer = findViewById(R.id.TwoPlayers)
 
         playWithComputerButton.setOnClickListener {
-            val intent = Intent(this, PlayWithComputerGetName::class.java)
+            val intent = Intent(this, ChooseComputerLevel::class.java)
             startActivity(intent)
         }
         twoPlayer.setOnClickListener {

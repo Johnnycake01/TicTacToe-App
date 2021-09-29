@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.tictactoe.GameLogic;
+import com.example.tictactoe.logic.GameLogic;
 import com.example.tictactoe.R;
 
 public class TicTacToeBoard extends View {

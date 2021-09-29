@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
         <activity
+            android:name=".ui.ChooseComputerLevel"
+            android:exported="true" />
+        <activity
+            android:name=".ui.PlayWithComputerHard"
+            android:exported="true" />
+        <activity
             android:name=".ui.ComputerGameBoard"
             android:exported="true" />
         <activity
