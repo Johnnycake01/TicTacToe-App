@@ -70,8 +70,8 @@ class PlayWithComputerHard : AppCompatActivity() {
                 boardCells[i][j]?.layoutParams = GridLayout.LayoutParams().apply {
                     rowSpec = GridLayout.spec(i)
                     columnSpec = GridLayout.spec(j)
-                    width = 250
-                    height = 230
+                    width = 200
+                    height = 200
                     bottomMargin = 5
                     topMargin = 5
                     leftMargin = 5

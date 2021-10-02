@@ -124,10 +124,10 @@ public class ComputerTicTacToeBoard extends View {
     private void drawGameBoard(Canvas canvas) {
         paint.setColor(boardColor);
         paint.setStrokeWidth(16);
-        for (int col = 0; col<4; col++){
+        for (int col = 1; col<3; col++){
             canvas.drawLine(cellSize*col,0,cellSize*col,canvas.getWidth(),paint);
         }
-        for (int  row = 0; row<4; row++){
+        for (int  row = 1; row<3; row++){
             canvas.drawLine(0,cellSize*row,canvas.getWidth(),cellSize*row,paint);
         }
 
