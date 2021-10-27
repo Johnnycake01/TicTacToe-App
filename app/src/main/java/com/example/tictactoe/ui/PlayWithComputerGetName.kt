@@ -35,7 +35,6 @@ class PlayWithComputerGetName : AppCompatActivity() {
 
     }
     override fun onBackPressed() {
-        super.onBackPressed()
         val intent = Intent(this, ChooseComputerLevel::class.java)
         startActivity(intent)
     }
