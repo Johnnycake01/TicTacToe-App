@@ -11,23 +11,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.ChooseComputerLevel"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.PlayWithComputerHard"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.ComputerGameBoard"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.ChooseGameType"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.PlayWithComputerGetName"
             android:exported="true" />
-        <activity android:name=".ui.GameBoard" />
-        <activity android:name=".ui.GetUserNames" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.GameBoard"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.GetUserNames"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.MainActivity"
+            android:screenOrientation="portrait"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
