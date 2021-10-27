@@ -17,7 +17,6 @@ class PlayWithComputerGetName : AppCompatActivity() {
         binding = ActivityPlayWithComputerGetNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
        val chooseLevel:Int = intent.getStringExtra("value")!!.toInt()
-        Log.d("llllllllll", "onCreate: $chooseLevel")
 
         binding.SinglePlayerNameSubmitButton.setOnClickListener {
             val player1:String = binding.PlayerName.text.toString()
@@ -33,5 +32,11 @@ class PlayWithComputerGetName : AppCompatActivity() {
             }
 
         }
+
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, ChooseComputerLevel::class.java)
+        startActivity(intent)
     }
 }

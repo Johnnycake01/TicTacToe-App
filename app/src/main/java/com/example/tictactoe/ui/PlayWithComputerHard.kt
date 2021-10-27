@@ -45,6 +45,12 @@ class PlayWithComputerHard : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
     //function is mapping
     //the internal board to the ImageView array board
     private fun mapBoardToUi() {

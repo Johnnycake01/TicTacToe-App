@@ -22,4 +22,9 @@ class ChooseComputerLevel : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, ChooseGameType::class.java)
+        startActivity(intent)
+    }
 }
