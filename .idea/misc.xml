@@ -5,9 +5,10 @@
       <map>
         <entry key="app/src/main/res/drawable/grid_border_style.xml" value="0.22685185185185186" />
         <entry key="app/src/main/res/drawable/ic_tictactoe.xml" value="0.22685185185185186" />
-        <entry key="app/src/main/res/layout/activity_choose_computer_level.xml" value="0.33" />
+        <entry key="app/src/main/res/drawable/play_button_design.xml" value="0.1527777777777778" />
+        <entry key="app/src/main/res/layout/activity_choose_computer_level.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_choose_game_type.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_computer_game_board.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_computer_game_board.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_game_board.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_get_user_namas.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />

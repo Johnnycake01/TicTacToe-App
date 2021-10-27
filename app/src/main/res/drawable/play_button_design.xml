@@ -2,9 +2,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 <item>
     <shape android:shape="rectangle">
-        <solid android:color="#F46537"/>
+        <solid android:color="@color/purple_200"/>
         <corners android:radius="20dp"/>
-        <stroke android:color="#9F2E0B" android:width="2dp"/>
+        <stroke android:color="@color/purple_500" android:width="2dp"/>
     </shape>
 </item>
 </layer-list>

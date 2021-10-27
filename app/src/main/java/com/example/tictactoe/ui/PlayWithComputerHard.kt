@@ -1,5 +1,6 @@
 package com.example.tictactoe.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -38,6 +39,16 @@ class PlayWithComputerHard : AppCompatActivity() {
             //to the visual board
             mapBoardToUi()
         }
+        binding.buttonQuit.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     //function is mapping
@@ -70,8 +81,8 @@ class PlayWithComputerHard : AppCompatActivity() {
                 boardCells[i][j]?.layoutParams = GridLayout.LayoutParams().apply {
                     rowSpec = GridLayout.spec(i)
                     columnSpec = GridLayout.spec(j)
-                    width = 250
-                    height = 230
+                    width = 200
+                    height = 200
                     bottomMargin = 5
                     topMargin = 5
                     leftMargin = 5
