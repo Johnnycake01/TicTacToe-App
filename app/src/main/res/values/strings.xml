@@ -10,4 +10,7 @@
 
     <string name="playAgain">Play Again</string>
     <string name="quitButton">Quit</string>
+    <string name="tic">Tic</string>
+    <string name="tac">Tac</string>
+    <string name="toe">Toe</string>
 </resources>
