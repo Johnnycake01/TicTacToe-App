@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.ChooseComputerLevel">
 
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Choose Game Level"
+    android:layout_marginTop="100dp"
+    android:textAppearance="@style/ticHomeText"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/easyLevel"
         android:layout_width="0dp"

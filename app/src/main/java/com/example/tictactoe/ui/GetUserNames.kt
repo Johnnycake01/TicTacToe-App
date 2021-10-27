@@ -32,7 +32,6 @@ class GetUserNames : AppCompatActivity() {
 
     }
     override fun onBackPressed() {
-        super.onBackPressed()
         val intent = Intent(this, ChooseGameType::class.java)
         startActivity(intent)
     }

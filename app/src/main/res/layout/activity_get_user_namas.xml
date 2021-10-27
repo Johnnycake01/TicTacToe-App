@@ -7,6 +7,17 @@
     tools:context=".ui.GetUserNames">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Enter Player Names"
+        android:textAppearance="@style/ticHomeText"
+        app:layout_constraintBottom_toTopOf="@+id/firstPlayerName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeTicText" />
+
+    <TextView
         android:id="@+id/homeTicText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

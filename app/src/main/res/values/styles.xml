@@ -11,4 +11,5 @@
         <item name="android:textSize">50sp</item>
         <item name="android:textColor">#7E7B7B</item>
     </style>
+
 </resources>
