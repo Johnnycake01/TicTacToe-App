@@ -4,32 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/tttBackgroundColour"
     tools:context=".ui.MainActivity">
 
+
     <TextView
-        android:id="@+id/homeTicText"
+        android:id="@+id/homeTic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tic_tac_toe"
+        android:text="@string/tic"
+        android:textColor="@color/white"
         android:textAppearance="@style/ticHomeText"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/marginEnd"
+        app:layout_constraintEnd_toStartOf="@id/homeTac"
+        app:layout_constraintTop_toTopOf="@id/homeTac"
+        app:layout_constraintBottom_toBottomOf="@id/homeTac"/>
+
+    <TextView
+        android:id="@+id/homeTac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tac"
+        android:textColor="@color/white"
+        android:textAppearance="@style/ticHomeText"
+        android:layout_marginBottom="@dimen/marginEnd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/homePlayButton"
-        />
+        app:layout_constraintBottom_toTopOf="@id/homePlayButton"/>
+    <TextView
+        android:id="@+id/homeToe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/toe"
+        android:textColor="@color/white"
+        android:textAppearance="@style/ticHomeText"
+        android:layout_marginStart="@dimen/marginEnd"
+        app:layout_constraintStart_toEndOf="@id/homeTac"
+        app:layout_constraintTop_toTopOf="@id/homeTac"
+        app:layout_constraintBottom_toBottomOf="@id/homeTac"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/homePlayButton"
+        android:visibility="invisible"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/play"
         android:layout_marginEnd="100dp"
         android:layout_marginStart="100dp"
         android:background="@drawable/play_button_design"
-        app:layout_constraintTop_toBottomOf="@id/homeTicText"
+        app:layout_constraintTop_toBottomOf="@id/homeTac"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tttView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:cardBackgroundColor="@color/tttBackgroundColour"
+        app:layout_constraintStart_toStartOf="@id/homeTic"
+        app:layout_constraintEnd_toEndOf="@id/homeToe"
+        app:layout_constraintTop_toTopOf="@id/homeTac"
+        app:layout_constraintBottom_toBottomOf="@id/homePlayButton">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewCircle1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+       app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/circle"/>
+
+    <ImageView
+        android:id="@+id/imageViewCross3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@id/imageViewCircle1"
+        app:layout_constraintTop_toBottomOf="@id/imageViewCross1"
+        app:srcCompat="@drawable/cross"/>
+
+    <ImageView
+        android:id="@+id/imageViewCross5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/circle"
+        app:layout_constraintStart_toStartOf="@id/imageViewCircle1"
+        app:layout_constraintTop_toBottomOf="@id/imageViewCross3"/>
+
+    <ImageView
+        android:id="@+id/imageViewCross1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/cross"
+        app:layout_constraintStart_toEndOf="@id/imageViewCircle1"
+        app:layout_constraintTop_toTopOf="@id/imageViewCircle1"/>
+
+    <ImageView
+        android:id="@+id/imageViewCross2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/circle"
+        app:layout_constraintStart_toEndOf="@id/imageViewCross1"
+        app:layout_constraintTop_toTopOf="@id/imageViewCircle1"/>
+
+
+
+    <ImageView
+        android:id="@+id/imageViewCircle2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/cross"
+        app:layout_constraintStart_toStartOf="@id/imageViewCross2"
+        app:layout_constraintTop_toBottomOf="@id/imageViewCross2"/>
+
+
+    <ImageView
+        android:id="@+id/imageViewCross4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/imageViewCross1"
+        app:layout_constraintStart_toEndOf="@id/imageViewCircle1"
+        app:srcCompat="@drawable/circle"/>
+
+    <ImageView
+        android:id="@+id/imageViewCircle3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+       app:layout_constraintStart_toStartOf="@id/imageViewCross1"
+        app:layout_constraintTop_toBottomOf="@id/imageViewCross4"
+        app:srcCompat="@drawable/cross" />
+
+    <ImageView
+        android:id="@+id/imageViewcircle4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/circle"
+        app:layout_constraintStart_toStartOf="@id/imageViewCross2"
+        app:layout_constraintTop_toBottomOf="@id/imageViewCircle2"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
