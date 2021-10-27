@@ -1,5 +1,6 @@
 package com.example.tictactoe.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -37,6 +38,10 @@ class PlayWithComputerHard : AppCompatActivity() {
             //this function will map the internal board
             //to the visual board
             mapBoardToUi()
+        }
+        binding.buttonQuit.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
