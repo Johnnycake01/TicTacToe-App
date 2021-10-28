@@ -3,6 +3,8 @@ package com.example.tictactoe.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageView
@@ -73,15 +75,22 @@ class PlayWithComputerHard : AppCompatActivity() {
         }
     }
 
+
     private fun loadBoard() {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+
+        val measureWidth = displayMetrics.widthPixels
+        val caclWidth = (measureWidth/3) - 40
+        Log.d("Measure", "loadBoard: $measureWidth")
         for (i in boardCells.indices) {
             for (j in boardCells.indices) {
                 boardCells[i][j] = ImageView(this)
                 boardCells[i][j]?.layoutParams = GridLayout.LayoutParams().apply {
                     rowSpec = GridLayout.spec(i)
                     columnSpec = GridLayout.spec(j)
-                    width = 200
-                    height = 200
+                    width = caclWidth
+                    height = caclWidth
                     bottomMargin = 5
                     topMargin = 5
                     leftMargin = 5
