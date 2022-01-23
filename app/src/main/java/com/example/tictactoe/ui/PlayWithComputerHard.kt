@@ -1,6 +1,7 @@
 package com.example.tictactoe.ui
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -9,16 +10,18 @@ import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.tictactoe.R
 import com.example.tictactoe.databinding.ActivityPlayWithComputerHardBinding
 import com.example.tictactoe.logic.HardGameBoardLogic
 import com.example.tictactoe.model.Cell
+import com.example.tictactoe.model.TicTacToeViewModel
+import com.example.tictactoe.ui.MainActivity.Companion.viewModel
 
 class PlayWithComputerHard : AppCompatActivity() {
     //Creating a 2D Array of ImageViews
  private lateinit var binding: ActivityPlayWithComputerHardBinding
     private lateinit var board:HardGameBoardLogic
-
     private val boardCells = Array(3) { arrayOfNulls<ImageView>(3) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -140,5 +143,18 @@ class PlayWithComputerHard : AppCompatActivity() {
 
         }
 
+    }
+    override fun onResume() {
+        super.onResume()
+        viewModel.playAudio(this)
+    }
+    override fun onStop() {
+        super.onStop()
+        viewModel.pauseAudio()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.stopAudio()
     }
 }

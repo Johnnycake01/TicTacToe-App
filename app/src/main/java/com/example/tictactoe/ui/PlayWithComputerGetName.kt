@@ -1,14 +1,18 @@
 package com.example.tictactoe.ui
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatButton
+import androidx.lifecycle.ViewModelProvider
 import com.example.tictactoe.R
 import com.example.tictactoe.databinding.ActivityPlayWithComputerGetNameBinding
 import com.example.tictactoe.databinding.ActivityPlayWithComputerHardBinding
+import com.example.tictactoe.model.TicTacToeViewModel
+import com.example.tictactoe.ui.MainActivity.Companion.viewModel
 
 class PlayWithComputerGetName : AppCompatActivity() {
     private lateinit var binding: ActivityPlayWithComputerGetNameBinding
@@ -37,5 +41,18 @@ class PlayWithComputerGetName : AppCompatActivity() {
     override fun onBackPressed() {
         val intent = Intent(this, ChooseComputerLevel::class.java)
         startActivity(intent)
+    }
+    override fun onResume() {
+        super.onResume()
+        viewModel.playAudio(this)
+    }
+    override fun onStop() {
+        super.onStop()
+        viewModel.pauseAudio()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.stopAudio()
     }
 }
