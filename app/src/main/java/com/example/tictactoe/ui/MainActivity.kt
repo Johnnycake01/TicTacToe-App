@@ -3,6 +3,7 @@ package com.example.tictactoe.ui
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -10,8 +11,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
+import androidx.lifecycle.ViewModelProvider
 import com.example.tictactoe.R
 import com.example.tictactoe.databinding.ActivityMainBinding
+import com.example.tictactoe.model.TicTacToeViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
@@ -24,10 +27,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tttIconView: View
     private lateinit var playButton: AppCompatButton
     private lateinit var analytics: FirebaseAnalytics
+    companion object{
+        lateinit var viewModel: TicTacToeViewModel
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        viewModel = ViewModelProvider(this).get(TicTacToeViewModel::class.java)
         textTic = findViewById(R.id.homeTic)
         textTac = findViewById(R.id.homeTac)
         textToe = findViewById(R.id.homeToe)
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         scaleTextTac()
         scaleTextToe()
         scaleTttIconView()
+
 
 
         val handler = Handler(mainLooper)
@@ -97,5 +104,17 @@ class MainActivity : AppCompatActivity() {
         startActivity(a)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.playAudio(this)
+    }
+    override fun onStop() {
+        super.onStop()
+        viewModel.pauseAudio()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.stopAudio()
+    }
 }
