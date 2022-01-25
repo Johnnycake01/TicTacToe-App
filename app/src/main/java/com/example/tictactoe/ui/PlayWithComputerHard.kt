@@ -1,7 +1,6 @@
 package com.example.tictactoe.ui
 
 import android.content.Intent
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -10,13 +9,12 @@ import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.example.tictactoe.R
 import com.example.tictactoe.databinding.ActivityPlayWithComputerHardBinding
 import com.example.tictactoe.logic.HardGameBoardLogic
 import com.example.tictactoe.model.Cell
-import com.example.tictactoe.model.TicTacToeViewModel
-import com.example.tictactoe.ui.MainActivity.Companion.viewModel
+import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.example.tictactoe.utils.*
 
 class PlayWithComputerHard : AppCompatActivity() {
     //Creating a 2D Array of ImageViews
@@ -28,11 +26,13 @@ class PlayWithComputerHard : AppCompatActivity() {
         binding = ActivityPlayWithComputerHardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         board = HardGameBoardLogic()
+        stopMusic(mediaPlayer)
         //calling the function to load our tic tac toe board
         loadBoard()
 
         //restart functionality
         binding.buttonRestart.setOnClickListener {
+            clickSound(this)
             //creating a new board instance
             //it will empty every cell
             board = HardGameBoardLogic()
@@ -45,12 +45,14 @@ class PlayWithComputerHard : AppCompatActivity() {
             mapBoardToUi()
         }
         binding.buttonQuit.setOnClickListener {
+            clickSound(this)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
 
     override fun onBackPressed() {
+        clickSound(this)
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
@@ -62,6 +64,7 @@ class PlayWithComputerHard : AppCompatActivity() {
             for (j in board.board.indices) {
                 when (board.board[i][j]) {
                     HardGameBoardLogic.PLAYER -> {
+                        playerVsComputerSound(this)
                         boardCells[i][j]?.setImageResource(R.drawable.circle)
                         boardCells[i][j]?.isEnabled = false
                     }
@@ -136,25 +139,37 @@ class PlayWithComputerHard : AppCompatActivity() {
             //Displaying the results
             //according to the game status
             when {
-                board.hasComputerWon() -> "Computer Won".also { binding.textViewResult.text = it }
-                board.hasPlayerWon() -> "Player Won".also { binding.textViewResult.text = it }
-                board.isGameOver -> "Game Tied".also { binding.textViewResult.text = it }
+                board.hasComputerWon() -> {
+                    "Computer Won".also { binding.textViewResult.text = it }
+                    winSound(this@PlayWithComputerHard)
+                }
+                board.hasPlayerWon() ->{
+                    "Player Won".also { binding.textViewResult.text = it }
+                    winSound(this@PlayWithComputerHard)
+                }
+                board.isGameOver -> {
+                    "Game Tied".also { binding.textViewResult.text = it }
+                    winSound(this@PlayWithComputerHard)
+                }
             }
 
         }
 
     }
-    override fun onResume() {
-        super.onResume()
-        viewModel.playAudio(this)
-    }
-    override fun onStop() {
-        super.onStop()
-        viewModel.pauseAudio()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.stopAudio()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        startMusic(mediaPlayer)
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//            pauseMusic(mediaPlayer)
+//
+//    }
+//
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        stopMusic(mediaPlayer)
+//    }
 }

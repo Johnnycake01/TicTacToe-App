@@ -16,12 +16,14 @@ import androidx.annotation.Nullable;
 
 import com.example.tictactoe.logic.ComputerGameLogicEasy;
 import com.example.tictactoe.R;
+import com.example.tictactoe.utils.ClickListenerHelper;
 
 
 public class ComputerTicTacToeBoard extends View {
     private final int boardColor;
     private final int XColor;
     private final int OColor;
+    public ClickListenerHelper clickListenerHelper;
     private Boolean winning = false;
     private final int winningLineColor;
     private final ComputerGameLogicEasy game;
@@ -54,10 +56,13 @@ public class ComputerTicTacToeBoard extends View {
             int row = (int) (Math.ceil(y/cellSize));
             int col = (int) (Math.ceil(x/cellSize));
             if(!winning){
-                if(game.updateGameBoard(row,col)){
+                clickListenerHelper.onClickEvent();                if(game.updateGameBoard(row,col)){
                     invalidate();
-                    if(game.winnerCheck()){
+                    if(game.winnerCheck() == 1){
                         winning = true;
+                        clickListenerHelper.onWinEvent();
+                    }else if(game.winnerCheck() ==2){
+                        clickListenerHelper.onWinEvent();
                     }
 
 

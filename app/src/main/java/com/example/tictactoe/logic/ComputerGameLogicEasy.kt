@@ -57,7 +57,7 @@ class ComputerGameLogicEasy {
     fun updateGameBoard(row:Int,col:Int):Boolean{
         if (rowColArray[row-1][col-1] == 0){
             rowColArray[row-1][col-1] = player
-            if (!winnerCheck()){
+            if (winnerCheck() != 1){
                 checkRemainingCell()
             }
 
@@ -95,7 +95,7 @@ class ComputerGameLogicEasy {
 
 
 
-    fun winnerCheck():Boolean{
+    fun winnerCheck():Int{
         var isWinner = false
         for (r in 0..2){
             //horizontal check, win type 1
@@ -149,16 +149,16 @@ class ComputerGameLogicEasy {
                 playAgainBTN.visibility = View.VISIBLE
                 homeButton.visibility = View.VISIBLE
                 "${playerName[player - 1]} won!!!".also { playerTurn.text = it }
-                return true
+                return 1
             }
             boardCount == 9 -> {
                 playAgainBTN.visibility = View.VISIBLE
                 homeButton.visibility = View.VISIBLE
                 "Its a tie!!!".also { playerTurn.text = it }
-                return false
+                return 2
             }
             else -> {
-                return false
+                return 3
             }
         }
     }

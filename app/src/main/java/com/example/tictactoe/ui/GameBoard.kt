@@ -1,19 +1,17 @@
 package com.example.tictactoe.ui
 
 import android.content.Intent
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import com.example.tictactoe.R
 import com.example.tictactoe.drawable.TicTacToeBoard
-import com.example.tictactoe.model.TicTacToeViewModel
-import com.example.tictactoe.ui.MainActivity.Companion.viewModel
+import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.example.tictactoe.utils.*
 
-class GameBoard : AppCompatActivity() {
+class GameBoard : AppCompatActivity() , ClickListenerHelper {
     private lateinit var ticTacToeBoard: TicTacToeBoard
     private lateinit var replayButton: Button
     private lateinit var endGame:Button
@@ -22,7 +20,9 @@ class GameBoard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_board)
+        stopMusic(mediaPlayer)
         ticTacToeBoard = findViewById(R.id.ticTacToeBoard)
+        ticTacToeBoard.clickListenerHelper = this
         replayButton = findViewById(R.id.gameReplayButton)
         endGame = findViewById(R.id.gameQuitButton)
         displayPlayerName = findViewById(R.id.tvPlayerName)
@@ -33,30 +33,42 @@ class GameBoard : AppCompatActivity() {
         ticTacToeBoard.setUpGame(replayButton,endGame,displayPlayerName,playerNames)
 
         replayButton.setOnClickListener {
+            clickSound(this)
             ticTacToeBoard.resetGame()
             ticTacToeBoard.invalidate()
         }
         endGame.setOnClickListener {
+            clickSound(this)
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
     }
     override fun onBackPressed() {
+        clickSound(this)
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-    override fun onResume() {
-        super.onResume()
-        viewModel.playAudio(this)
+
+    override fun onClickEvent() {
+//        playerVsComputerSound(this)
+        playerVsPlayerSound(this)
     }
 
-    override fun onStop() {
-        super.onStop()
-        viewModel.pauseAudio()
+    override fun onWinEvent() {
+        winSound(this)
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.stopAudio()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        startMusic(mediaPlayer)
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        pauseMusic(mediaPlayer)
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        stopMusic(mediaPlayer)
+//    }
 }

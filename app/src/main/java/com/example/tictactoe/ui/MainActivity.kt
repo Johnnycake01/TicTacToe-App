@@ -1,6 +1,5 @@
 package com.example.tictactoe.ui
 
-import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.media.MediaPlayer
@@ -8,17 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.ViewModelProvider
 import com.example.tictactoe.R
-import com.example.tictactoe.databinding.ActivityMainBinding
-import com.example.tictactoe.model.TicTacToeViewModel
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.example.tictactoe.utils.clickSound
+import com.example.tictactoe.utils.pauseMusic
+import com.example.tictactoe.utils.startMusic
+import com.example.tictactoe.utils.stopMusic
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var textTic: TextView
@@ -28,18 +25,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var playButton: AppCompatButton
     private lateinit var analytics: FirebaseAnalytics
     companion object{
-        lateinit var viewModel: TicTacToeViewModel
+        lateinit var mediaPlayer: MediaPlayer
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(TicTacToeViewModel::class.java)
         textTic = findViewById(R.id.homeTic)
         textTac = findViewById(R.id.homeTac)
         textToe = findViewById(R.id.homeToe)
         tttIconView = findViewById(R.id.tttView)
         playButton = findViewById(R.id.homePlayButton)
-
+        mediaPlayer = MediaPlayer.create(this,R.raw.mixkit_solitude)
+        startMusic(mediaPlayer)
         scaleTextTic()
         scaleTextTac()
         scaleTextToe()
@@ -68,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 //        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         playButton.setOnClickListener {
+            clickSound(this)
             val intent = Intent(this, ChooseGameType::class.java)
             startActivity(intent)
         }
@@ -98,6 +96,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        clickSound(this)
         val a = Intent(Intent.ACTION_MAIN)
         a.addCategory(Intent.CATEGORY_HOME)
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -106,15 +105,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.playAudio(this)
+        startMusic(mediaPlayer)
     }
-    override fun onStop() {
-        super.onStop()
-        viewModel.pauseAudio()
+
+    override fun onPause() {
+        super.onPause()
+        pauseMusic(mediaPlayer)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.stopAudio()
+        stopMusic(mediaPlayer)
     }
 }

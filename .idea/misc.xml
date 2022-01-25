@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/johnson.oyesina/StudioProjects/TicTacToe-App/app/src/main/res/layout/activity_computer_game_board.xml" value="0.1" />
+        <entry key="..\:/Users/johnson.oyesina/StudioProjects/TicTacToe-App/app/src/main/res/layout/activity_game_board.xml" value="0.1" />
+        <entry key="..\:/Users/johnson.oyesina/StudioProjects/TicTacToe-App/app/src/main/res/layout/activity_play_with_computer_hard.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/grid_border_style.xml" value="0.22685185185185186" />
         <entry key="app/src/main/res/drawable/ic_tictactoe.xml" value="0.22685185185185186" />
         <entry key="app/src/main/res/drawable/play_button_design.xml" value="0.1527777777777778" />
