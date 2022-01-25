@@ -1,73 +1,100 @@
-package com.example.tictactoe.logic
+package com.coroutine.tictactoe.logic
 
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.example.tictactoe.utils.winSound
+import com.coroutine.tictactoe.model.Cell
+import kotlin.random.Random
 
-class GameLogic{
+class ComputerGameLogicEasy {
     private var player: Int = 1
-    var isTied = false
     fun getPlayer() = player
     fun setPlayer(player:Int){
         this.player = player
     }
 
-    private lateinit var playAgainBTN:Button
+    private lateinit var playAgainBTN: Button
 
-    fun setPlayAgainBTN(playAgain:Button){
+    fun setPlayAgainBTN(playAgain: Button){
         this.playAgainBTN = playAgain
     }
 
-    private lateinit var homeButton:Button
+    private lateinit var homeButton: Button
 
-    fun setHomeBTN(homeButton:Button){
+    fun setHomeBTN(homeButton: Button){
         this.homeButton = homeButton
     }
 
-    private lateinit var playerTurn:TextView
+    private lateinit var playerTurn: TextView
 
-    fun setPlayerTurn(playerTurn:TextView){
+    fun setPlayerTurn(playerTurn: TextView){
         this.playerTurn = playerTurn
     }
 
-    private var playerName:Array<String> = arrayOf("Player 1","Player 2")
+    private var playerName:Array<String> = arrayOf("Player 1","Computer")
 
     fun setPlayerName(playerName:Array<String>){
         this.playerName = playerName
     }
 
-    private var  rowColArray:Array<IntArray> = Array(3){IntArray(3)}
+    private var rowColArray:Array<IntArray> = Array(3){IntArray(3)}
 
     init {
         for(r in 0..2){
             for (c in 0..2){
-                        rowColArray[r][c] = 0
-                    }
-                }
+                rowColArray[r][c] = 0
             }
+        }
+    }
     //first element is row, second element is col and third element is line type
     private var winType = arrayOf(-1,-1,-1)
     fun getWinType() = winType
 
 
-  fun getRowColArray():Array<IntArray>{
-      return rowColArray
-  }
+    fun getRowColArray():Array<IntArray>{
+        return rowColArray
+    }
     fun updateGameBoard(row:Int,col:Int):Boolean{
         if (rowColArray[row-1][col-1] == 0){
             rowColArray[row-1][col-1] = player
+            if (winnerCheck() != 1){
+                checkRemainingCell()
+            }
 
             if (player == 1){
-                "${playerName[1]}'s turn".also { playerTurn.text = it }
+                "Computer's turn".also { playerTurn.text = it }
             }else{
                 "${playerName[0]}'s turn".also { playerTurn.text = it }
+
             }
             return true
         }else{
             return false
         }
     }
+
+    fun checkRemainingCell(){
+        val availableCell:MutableList<Cell> = mutableListOf()
+        for (i in rowColArray.indices){
+            for (j in rowColArray.indices){
+                if (rowColArray[i][j] == 0){
+                    availableCell.add(Cell(i,j))
+                }
+            }
+        }
+        if (availableCell.isNotEmpty()){
+            val cell = availableCell[Random.nextInt(0,availableCell.size)]
+            rowColArray[cell.row][cell.col] = 2
+
+            //updating players turn
+             setPlayer(2)
+        }
+    }
+
+
+
+
+
     fun winnerCheck():Int{
         var isWinner = false
         for (r in 0..2){
@@ -113,7 +140,7 @@ class GameLogic{
         var boardCount = 0
         for(r in 0..2){
             for (c in 0..2){
-               if (rowColArray[r][c] != 0) boardCount++
+                if (rowColArray[r][c] != 0) boardCount++
             }
         }
 
@@ -121,7 +148,7 @@ class GameLogic{
             isWinner -> {
                 playAgainBTN.visibility = View.VISIBLE
                 homeButton.visibility = View.VISIBLE
-                "${playerName[player -1]} won!!!".also { playerTurn.text = it }
+                "${playerName[player - 1]} won!!!".also { playerTurn.text = it }
                 return 1
             }
             boardCount == 9 -> {
@@ -146,6 +173,4 @@ class GameLogic{
         homeButton.visibility = View.GONE
         "${playerName[0]}'s turn".also { playerTurn.text =it }
     }
-
-
 }

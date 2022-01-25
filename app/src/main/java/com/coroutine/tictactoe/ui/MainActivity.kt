@@ -1,4 +1,4 @@
-package com.example.tictactoe.ui
+package com.coroutine.tictactoe.ui
 
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -9,12 +9,11 @@ import android.os.Handler
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import androidx.lifecycle.ViewModelProvider
-import com.example.tictactoe.R
-import com.example.tictactoe.utils.clickSound
-import com.example.tictactoe.utils.pauseMusic
-import com.example.tictactoe.utils.startMusic
-import com.example.tictactoe.utils.stopMusic
+import com.coroutine.tictactoe.R
+import com.coroutine.tictactoe.utils.clickSound
+import com.coroutine.tictactoe.utils.pauseMusic
+import com.coroutine.tictactoe.utils.startMusic
+import com.coroutine.tictactoe.utils.stopMusic
 import com.google.firebase.analytics.FirebaseAnalytics
 
 class MainActivity : AppCompatActivity() {

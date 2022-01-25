@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tictactoe">
+    package="com.coroutine.tictactoe">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -12,31 +12,31 @@
         android:theme="@style/Theme.TicTacToe">
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.ChooseComputerLevel"
+            android:name="com.coroutine.tictactoe.ui.ChooseComputerLevel"
             android:exported="true" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.PlayWithComputerHard"
+            android:name="com.coroutine.tictactoe.ui.PlayWithComputerHard"
             android:exported="true" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.ComputerGameBoard"
+            android:name="com.coroutine.tictactoe.ui.ComputerGameBoard"
             android:exported="true" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.ChooseGameType"
+            android:name="com.coroutine.tictactoe.ui.ChooseGameType"
             android:exported="true" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.PlayWithComputerGetName"
+            android:name="com.coroutine.tictactoe.ui.PlayWithComputerGetName"
             android:exported="true" />
-        <activity android:name=".ui.GameBoard"
+        <activity android:name="com.coroutine.tictactoe.ui.GameBoard"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".ui.GetUserNames"
+        <activity android:name="com.coroutine.tictactoe.ui.GetUserNames"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".ui.MainActivity"
+        <activity android:name="com.coroutine.tictactoe.ui.MainActivity"
             android:screenOrientation="portrait"
             >
 

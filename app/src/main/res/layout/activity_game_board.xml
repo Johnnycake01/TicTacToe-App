@@ -60,7 +60,7 @@
         android:textSize="18sp"
         />
 
-    <com.example.tictactoe.drawable.TicTacToeBoard
+    <com.coroutine.tictactoe.drawable.TicTacToeBoard
         android:id="@+id/ticTacToeBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

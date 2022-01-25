@@ -1,4 +1,4 @@
-package com.example.tictactoe.ui
+package com.coroutine.tictactoe.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,9 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import com.example.tictactoe.R
-import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
-import com.example.tictactoe.utils.*
+import com.coroutine.tictactoe.R
+import com.coroutine.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.coroutine.tictactoe.utils.*
 
 class GetUserNames : AppCompatActivity() {
     private lateinit var submit: AppCompatButton

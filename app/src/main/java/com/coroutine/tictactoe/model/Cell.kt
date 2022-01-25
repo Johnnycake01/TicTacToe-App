@@ -1,4 +1,4 @@
-package com.example.tictactoe.model
+package com.coroutine.tictactoe.model
 
 data class Cell(
     val row:Int,

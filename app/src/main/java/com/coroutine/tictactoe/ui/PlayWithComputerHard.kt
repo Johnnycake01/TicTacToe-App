@@ -1,4 +1,4 @@
-package com.example.tictactoe.ui
+package com.coroutine.tictactoe.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +9,12 @@ import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import com.example.tictactoe.R
-import com.example.tictactoe.databinding.ActivityPlayWithComputerHardBinding
-import com.example.tictactoe.logic.HardGameBoardLogic
-import com.example.tictactoe.model.Cell
-import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
-import com.example.tictactoe.utils.*
+import com.coroutine.tictactoe.R
+import com.coroutine.tictactoe.databinding.ActivityPlayWithComputerHardBinding
+import com.coroutine.tictactoe.logic.HardGameBoardLogic
+import com.coroutine.tictactoe.model.Cell
+import com.coroutine.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.coroutine.tictactoe.utils.*
 
 class PlayWithComputerHard : AppCompatActivity() {
     //Creating a 2D Array of ImageViews
