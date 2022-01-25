@@ -38,7 +38,13 @@ fun winSound(context: Context){
     val mediaPlayer:MediaPlayer = MediaPlayer.create(context,
         R.raw.mixkit_positive_interface_beep
     )
-    mediaPlayer.setVolume(0.1f,0.2f)
+    mediaPlayer.start()
+}
+
+fun playErrorSound(context: Context){
+    val mediaPlayer:MediaPlayer = MediaPlayer.create(context,
+        R.raw.mixkit_mouse_hard_clicking
+    )
     mediaPlayer.start()
 }
 
