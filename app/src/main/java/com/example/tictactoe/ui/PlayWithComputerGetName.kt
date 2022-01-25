@@ -1,18 +1,14 @@
 package com.example.tictactoe.ui
 
 import android.content.Intent
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.EditText
-import androidx.appcompat.widget.AppCompatButton
-import androidx.lifecycle.ViewModelProvider
-import com.example.tictactoe.R
 import com.example.tictactoe.databinding.ActivityPlayWithComputerGetNameBinding
-import com.example.tictactoe.databinding.ActivityPlayWithComputerHardBinding
-import com.example.tictactoe.model.TicTacToeViewModel
-import com.example.tictactoe.ui.MainActivity.Companion.viewModel
+import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.example.tictactoe.utils.clickSound
+import com.example.tictactoe.utils.pauseMusic
+import com.example.tictactoe.utils.startMusic
+import com.example.tictactoe.utils.stopMusic
 
 class PlayWithComputerGetName : AppCompatActivity() {
     private lateinit var binding: ActivityPlayWithComputerGetNameBinding
@@ -20,9 +16,11 @@ class PlayWithComputerGetName : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayWithComputerGetNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        startMusic(mediaPlayer)
        val chooseLevel:Int = intent.getStringExtra("value")!!.toInt()
 
         binding.SinglePlayerNameSubmitButton.setOnClickListener {
+            clickSound(this)
             val player1:String = binding.PlayerName.text.toString()
             val names:Array<String> = arrayOf(player1,"Computer")
             if (chooseLevel == 1){
@@ -39,20 +37,22 @@ class PlayWithComputerGetName : AppCompatActivity() {
 
     }
     override fun onBackPressed() {
+        clickSound(this)
         val intent = Intent(this, ChooseComputerLevel::class.java)
         startActivity(intent)
     }
     override fun onResume() {
         super.onResume()
-        viewModel.playAudio(this)
+        startMusic(mediaPlayer)
     }
-    override fun onStop() {
-        super.onStop()
-        viewModel.pauseAudio()
+
+    override fun onPause() {
+        super.onPause()
+        pauseMusic(mediaPlayer)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.stopAudio()
+        stopMusic(mediaPlayer)
     }
 }

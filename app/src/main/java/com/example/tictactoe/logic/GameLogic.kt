@@ -3,9 +3,11 @@ package com.example.tictactoe.logic
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.tictactoe.utils.winSound
 
 class GameLogic{
     private var player: Int = 1
+    var isTied = false
     fun getPlayer() = player
     fun setPlayer(player:Int){
         this.player = player
@@ -66,7 +68,7 @@ class GameLogic{
             return false
         }
     }
-    fun winnerCheck():Boolean{
+    fun winnerCheck():Int{
         var isWinner = false
         for (r in 0..2){
             //horizontal check, win type 1
@@ -120,16 +122,16 @@ class GameLogic{
                 playAgainBTN.visibility = View.VISIBLE
                 homeButton.visibility = View.VISIBLE
                 "${playerName[player -1]} won!!!".also { playerTurn.text = it }
-                return true
+                return 1
             }
             boardCount == 9 -> {
                 playAgainBTN.visibility = View.VISIBLE
                 homeButton.visibility = View.VISIBLE
                 "Its a tie!!!".also { playerTurn.text = it }
-                return false
+                return 2
             }
             else -> {
-                return false
+                return 3
             }
         }
     }
