@@ -1,15 +1,15 @@
-package com.example.tictactoe.ui
+package com.coroutine.tictactoe.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
-import com.example.tictactoe.R
-import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
-import com.example.tictactoe.utils.clickSound
-import com.example.tictactoe.utils.pauseMusic
-import com.example.tictactoe.utils.startMusic
-import com.example.tictactoe.utils.stopMusic
+import com.coroutine.tictactoe.R
+import com.coroutine.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.coroutine.tictactoe.utils.clickSound
+import com.coroutine.tictactoe.utils.pauseMusic
+import com.coroutine.tictactoe.utils.startMusic
+import com.coroutine.tictactoe.utils.stopMusic
 
 class ChooseGameType : AppCompatActivity() {
     private lateinit var playWithComputerButton: AppCompatButton

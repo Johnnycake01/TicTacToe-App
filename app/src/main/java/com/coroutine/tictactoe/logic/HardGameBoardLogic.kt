@@ -1,6 +1,6 @@
-package com.example.tictactoe.logic
+package com.coroutine.tictactoe.logic
 
-import com.example.tictactoe.model.Cell
+import com.coroutine.tictactoe.model.Cell
 
 class HardGameBoardLogic {
 

@@ -1,4 +1,4 @@
-package com.example.tictactoe.ui
+package com.coroutine.tictactoe.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,26 +6,26 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.example.tictactoe.R
-import com.example.tictactoe.drawable.TicTacToeBoard
-import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
-import com.example.tictactoe.utils.*
+import com.coroutine.tictactoe.R
+import com.coroutine.tictactoe.drawable.ComputerTicTacToeBoard
+import com.coroutine.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.coroutine.tictactoe.utils.*
 
-class GameBoard : AppCompatActivity() , ClickListenerHelper {
-    private lateinit var ticTacToeBoard: TicTacToeBoard
+
+class ComputerGameBoard : AppCompatActivity() , ClickListenerHelper{
+    private lateinit var ticTacToeBoard: ComputerTicTacToeBoard
     private lateinit var replayButton: Button
-    private lateinit var endGame:Button
-    private lateinit var displayPlayerName:TextView
-
+    private lateinit var endGame: Button
+    private lateinit var displayPlayerName: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game_board)
+        setContentView(R.layout.activity_computer_game_board)
         stopMusic(mediaPlayer)
-        ticTacToeBoard = findViewById(R.id.ticTacToeBoard)
+        ticTacToeBoard = findViewById(R.id.computerTicTacToeBoard)
         ticTacToeBoard.clickListenerHelper = this
-        replayButton = findViewById(R.id.gameReplayButton)
-        endGame = findViewById(R.id.gameQuitButton)
-        displayPlayerName = findViewById(R.id.tvPlayerName)
+        replayButton = findViewById(R.id.computerGameReplayButton)
+        endGame = findViewById(R.id.computerGameQuitButton)
+        displayPlayerName = findViewById(R.id.tvComputerPlayerName)
         val playerNames:Array<String> = intent.getStringArrayExtra("PLAYER_NAMES")!!
         "${playerNames[0]}'s turn".also { displayPlayerName.text = it }
         replayButton.visibility = View.GONE
@@ -50,8 +50,7 @@ class GameBoard : AppCompatActivity() , ClickListenerHelper {
     }
 
     override fun onClickEvent() {
-//        playerVsComputerSound(this)
-        playerVsPlayerSound(this)
+        playerVsComputerSound(this)
     }
 
     override fun onWinEvent() {

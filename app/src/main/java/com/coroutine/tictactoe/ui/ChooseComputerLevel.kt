@@ -1,14 +1,14 @@
-package com.example.tictactoe.ui
+package com.coroutine.tictactoe.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tictactoe.databinding.ActivityChooseComputerLevelBinding
-import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
-import com.example.tictactoe.utils.clickSound
-import com.example.tictactoe.utils.pauseMusic
-import com.example.tictactoe.utils.startMusic
-import com.example.tictactoe.utils.stopMusic
+import com.coroutine.tictactoe.databinding.ActivityChooseComputerLevelBinding
+import com.coroutine.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.coroutine.tictactoe.utils.clickSound
+import com.coroutine.tictactoe.utils.pauseMusic
+import com.coroutine.tictactoe.utils.startMusic
+import com.coroutine.tictactoe.utils.stopMusic
 
 class ChooseComputerLevel : AppCompatActivity() {
     private lateinit var binding:ActivityChooseComputerLevelBinding

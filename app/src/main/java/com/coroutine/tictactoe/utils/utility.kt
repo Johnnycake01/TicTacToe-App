@@ -1,8 +1,8 @@
-package com.example.tictactoe.utils
+package com.coroutine.tictactoe.utils
 
 import android.content.Context
 import android.media.MediaPlayer
-import com.example.tictactoe.R
+import com.coroutine.tictactoe.R
 
 fun startMusic(mediaPlayer: MediaPlayer){
     mediaPlayer.setVolume(0.1f,0.2f)

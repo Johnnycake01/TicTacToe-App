@@ -1,12 +1,12 @@
-package com.example.tictactoe.ui
+package com.coroutine.tictactoe.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.tictactoe.databinding.ActivityPlayWithComputerGetNameBinding
-import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
-import com.example.tictactoe.utils.*
+import com.coroutine.tictactoe.databinding.ActivityPlayWithComputerGetNameBinding
+import com.coroutine.tictactoe.ui.MainActivity.Companion.mediaPlayer
+import com.coroutine.tictactoe.utils.*
 
 class PlayWithComputerGetName : AppCompatActivity() {
     private lateinit var binding: ActivityPlayWithComputerGetNameBinding
