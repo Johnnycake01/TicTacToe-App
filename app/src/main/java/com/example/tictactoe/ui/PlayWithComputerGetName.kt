@@ -3,12 +3,10 @@ package com.example.tictactoe.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.tictactoe.databinding.ActivityPlayWithComputerGetNameBinding
 import com.example.tictactoe.ui.MainActivity.Companion.mediaPlayer
-import com.example.tictactoe.utils.clickSound
-import com.example.tictactoe.utils.pauseMusic
-import com.example.tictactoe.utils.startMusic
-import com.example.tictactoe.utils.stopMusic
+import com.example.tictactoe.utils.*
 
 class PlayWithComputerGetName : AppCompatActivity() {
     private lateinit var binding: ActivityPlayWithComputerGetNameBinding
@@ -20,17 +18,23 @@ class PlayWithComputerGetName : AppCompatActivity() {
        val chooseLevel:Int = intent.getStringExtra("value")!!.toInt()
 
         binding.SinglePlayerNameSubmitButton.setOnClickListener {
+            binding.textinputError.visibility = View.GONE
             clickSound(this)
             val player1:String = binding.PlayerName.text.toString()
-            val names:Array<String> = arrayOf(player1,"Computer")
-            if (chooseLevel == 1){
-                val intent = Intent(this, ComputerGameBoard::class.java)
-                intent.putExtra("PLAYER_NAMES", names)
-                startActivity(intent)
+            if (checkIfValidInput(player1)) {
+                val names: Array<String> = arrayOf(player1, "Computer")
+                if (chooseLevel == 1) {
+                    val intent = Intent(this, ComputerGameBoard::class.java)
+                    intent.putExtra("PLAYER_NAMES", names)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, PlayWithComputerHard::class.java)
+                    intent.putExtra("PLAYER_NAMES", names)
+                    startActivity(intent)
+                }
             }else{
-                val intent = Intent(this, PlayWithComputerHard::class.java)
-                intent.putExtra("PLAYER_NAMES", names)
-                startActivity(intent)
+                playErrorSound(this)
+                binding.textinputError.visibility = View.VISIBLE
             }
 
         }
